@@ -8,17 +8,19 @@ const cors = require('cors');
 const errorHandler = require('./middleware/errorHandler/errorHandler');
 
 // Middleware
-app.use(errorHandler);
 app.use(express.json());
 app.use(cors());
+// app.use(errorHandler);
 
 
 const userRoute = require('./routes/v1/userRoute');
 
+
 app.get('/', (req, res) => {
     res.send('Route is Running Yah!')
 });
-
 app.use('/v1/user', userRoute);
 
+
+app.use(errorHandler)
 module.exports = app;

@@ -3,11 +3,12 @@ const app = require('./app');
 const colors = require('colors')
 const dotenv = require('dotenv').config();
 const port = process.env.PORT || 8080;
+// const errorHandler = require('./middleware/errorHandler/errorHandler');
 
-
+// app.use(errorHandler)
 mongoose.connect(process.env.DB_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
+    // useNewUrlParser: true,
+    // useUnifiedTopology: true
 }).then(() => {
     try {
         console.log('Database Connect Is Successfully'.magenta.bold);       

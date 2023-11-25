@@ -1,11 +1,10 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
-// const bcrypt = require("bcryptjs");
+const bcrypt = require('bcryptjs');
 
 const userSchema = new mongoose.Schema({
     name: {
         type: String,
-        unique: true,
         required: true
     },
     email: {
@@ -33,6 +32,24 @@ const userSchema = new mongoose.Schema({
 }, {
     timestamps: true
 });
+
+// secure password with the help of bcryptjs
+
+// userSchema.pre("save", async function (next) {
+//     const user = this
+//     if (!user.isModified("password")) {
+//         next()
+//     };
+//     try {
+//         const salt = await bcrypt.genSalt(10);
+//         const hashPassword = await bcrypt.hash(user.password, salt);
+//          user.password = hashPassword
+//          next()
+//     } catch (error) {
+//         next(error)
+//     }
+// });
+
 
 const User = mongoose.model('User', userSchema);
 module.exports = User
